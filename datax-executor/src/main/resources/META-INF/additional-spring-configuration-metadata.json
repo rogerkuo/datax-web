@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "datax.job.admin.addresses",
+      "type": "java.lang.String",
+      "description": "Description for datax.job.admin.addresses."
+  }
+] }

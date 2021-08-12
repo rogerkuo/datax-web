@@ -15,7 +15,7 @@ public class HandleProcessCallbackParam implements Serializable {
 
     public HandleProcessCallbackParam(){}
 
-    public HandleProcessCallbackParam(long logId,long logDateTime, String processId) {
+    public  HandleProcessCallbackParam(long logId,long logDateTime, String processId) {
         this.logId = logId;
         this.processId = processId;
         this.logDateTime=logDateTime;

@@ -54,6 +54,43 @@
         <oshi.core.version>3.5.0</oshi.core.version>
 
         <phoenix.version>5.0.0-HBase-2.0</phoenix.version>
+
+        <docker.file.version>v4.0.0</docker.file.version>
+        <docker.repository.releases>10.18.18.110:31002</docker.repository.releases>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <configuration>
+                    <serverId>docker-releases</serverId>
+                    <registryUrl>http://${docker.repository.releases}</registryUrl>
+                    <pushImage>true</pushImage>
+                    <imageName>${docker.repository.releases}/${project.groupId}/${project.artifactId}:${docker.file.version}</imageName>
+                    <!--                    <dockerHost>tcp://localhost:2375</dockerHost>-->
+                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                    <buildArgs>
+                        <active>k8s-888</active>
+                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                    <forceTags>true</forceTags>
+                    <rm>true</rm>
+                    <forceTags>true</forceTags>
+                    <imageTags>
+                        <imageTag>${docker.file.version}</imageTag>
+                    </imageTags>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

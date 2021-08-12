@@ -147,7 +147,7 @@ mkdir_p ${DATA_PATH}
 if [ "x${BASE_CONF_DIR}" != "x" ]; then
   LOG INFO "\033[1m Start to copy configuration file/directory\033[0m"
   # Copy the configuration file
-  copy_replace bootstrap.properties
+  copy_replace bootstrap-dev.properties
   copy_replace application.yml
   copy_replace logback.xml
   copy_replace i18n
